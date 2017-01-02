@@ -5,6 +5,7 @@ var fs = require('fs');
 function BasicCard(front, back) {
     this.front = front;
     this.back = back;
+    // function to add the card to a log file
     this.createCardJSON = function() {
         // flashcard object to be appended to log.txt
         var data = {
@@ -22,4 +23,5 @@ function BasicCard(front, back) {
     };
 }
 
+// export this thing!
 module.exports = BasicCard;
