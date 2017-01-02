@@ -28,10 +28,10 @@ function generateBasicFlashcard() {
         console.log('Back: ' + newBasicFlashcard.back);
         // restart the CLI from the beginning
         startCLI();
-    // Catch errors a promise may swallow
+        // Catch errors a promise may swallow
     }).catch(function(err) {
-			console.log(err);
-		});
+        console.log(err);
+    });
 }
 
 function generateClozeFlashcard() {
@@ -49,22 +49,22 @@ function generateClozeFlashcard() {
         var newClozeFlashcard = new ClozeCard(response.fullText, response.fullCloze);
         // create the cloze deleted property value via prototyped function
         newClozeFlashcard.createClozeDeleted()
-        // log the entries to the console
+            // log the entries to the console
         console.log('Full text: ' + newClozeFlashcard.text);
         console.log('Cloze: ' + newClozeFlashcard.cloze);
         console.log('Full text with cloze deleted: ' + newClozeFlashcard.clozeDeleted);
         if (newClozeFlashcard.clozeDeleted !== '') {
-	        // create and append JSON to file via the prototyped function
-	        newClozeFlashcard.createCardJSON();
-	      } else {
-	      	console.log('The cloze did not exist in the original text, and will not be saved.')
-	      }
+            // create and append JSON to file via the prototyped function
+            newClozeFlashcard.createCardJSON();
+        } else {
+            console.log('The cloze did not exist in the original text, and will not be saved.')
+        }
         // restart the CLI from the beginning
         startCLI();
-    // Catch errors a promise may swallow
+        // Catch errors a promise may swallow
     }).catch(function(err) {
-			console.log(err);
-		});
+        console.log(err);
+    });
 }
 
 // shows the cards to user via CLI
@@ -97,18 +97,18 @@ var showCard = function(cardArray, cardIndex) {
             console.log('NO!');
         }
     }).then(function(response) {
-		    // Card looper: if the card index is in the array, increase it and run showCard
-		    if (cardIndex < cardArray.length - 1) {
-		        showCard(cardArray, cardIndex + 1);
-		        // else restart the CLI
-		    } else {
-		        // restart the CLI from the beginning
-		        startCLI();
-		    }
-    // Catch errors a promise may swallow
+        // Card looper: if the card index is in the array, increase it and run showCard
+        if (cardIndex < cardArray.length - 1) {
+            showCard(cardArray, cardIndex + 1);
+            // else restart the CLI
+        } else {
+            // restart the CLI from the beginning
+            startCLI();
+        }
+        // Catch errors a promise may swallow
     }).catch(function(err) {
-			console.log(err);
-		});
+        console.log(err);
+    });
 };
 
 function previousFlashcards() {
@@ -175,10 +175,10 @@ function startCLI() {
             console.log('Something has gone wrong with displaying the JSON object! Abort!!!');
             return;
         }
-    // Catch errors a promise may swallow
+        // Catch errors a promise may swallow
     }).catch(function(err) {
-			console.log(err);
-		});
+        console.log(err);
+    });
 }
 
 // Start CLI
