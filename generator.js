@@ -52,3 +52,23 @@ function = generateBasicFlashcard() {
         console.log('Back: ' + newBasicFlashcard.back);
     });
 }
+
+function = generateClozeFlashcard() {
+    inquirer.prompt([{
+        type: 'input',
+        message: 'What the full text of the card be?',
+        name: 'fullText'
+    }, {
+        type: 'input',
+        message: 'What should the cloze be?',
+        name: 'fullCloze'
+    }]).then(function(answers) {
+        var newClozeFlashcard = new ClozeCard(answers.fullText, answers.fullCloze);
+        newClozeFlashcard.createClozeDeleted().then() {
+            console.log('Full text: ' + newClozeFlashcard.text);
+            console.log('Cloze: ' + newClozeFlashcard.cloze);
+            console.log('Full text with cloze deleted: ' + newClozeFlashcard.clozeDeleted);
+            newClozeFlashcard.createCardJSON();
+        };
+    });
+}
