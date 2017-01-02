@@ -36,6 +36,8 @@ The `Cloze Flashcard` will prompt you to input text for a full phrase (`text`), 
 
 If the `cloze` text does not completely match a portion of the `text`, you will receive a log of your entries, but you will get error messages informaing you of such, and the data will not be saved to the `log.txt` file.
 
+See the last two sections for examples of how the basic and cloze constructors work.
+
 ### Show all previous flashcards
 
 `Show all previous flashcards` will use the data stored in the `log.txt` file to loop through each flashcard previously created, and then follow a classic question and response format for using flashcards. 
@@ -51,3 +53,31 @@ Choosing the `EXIT` option will allow the user to exit the application.
 The CLI used in this application was built to above all else test the validity and reliability of the constructors and export system built into it, and therefore is not, and was never meant to be polished. This is a backend first project. 
 
 All errors should log appropriately to the console. 
+
+## Example of a Basic Flashcard
+
+```javascript
+function BasicCard(front, back) {
+    this.front = front;
+    this.back = back;
+    // function to add the card to a log file
+    this.createCardJSON = function() {
+        // flashcard object to be appended to log.txt
+        var data = {
+            front: this.front,
+            back: this.back,
+            type: 'basicCard',
+        };
+        // append card to log.txt
+        fs.appendFile('log.txt', JSON.stringify(data) + ';', 'utf8', function(err) {
+            // if error, log error
+            if (err) {
+                console.log(err);
+            }
+        });
+    };
+}
+```
+
+## Example of a Cloze Flashcard
+
