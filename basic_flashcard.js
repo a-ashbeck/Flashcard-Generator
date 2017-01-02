@@ -11,7 +11,7 @@ function BasicCard(front, back) {
         var data = {
             front: this.front,
             back: this.back,
-            type: 'basic',
+            type: 'basicCard',
         };
         // append card to log.txt
         fs.appendFile('log.txt', JSON.stringify(data) + ';', 'utf8', function(err) {

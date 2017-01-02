@@ -1,0 +1,22 @@
+{
+  "name": "flashcard-generator",
+  "version": "1.0.0",
+  "description": "This is homework 9 for the Northwestern Coding Bootcamp. This is a flashcard generator with a snazzy CLI.",
+  "main": "generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-ashbeck/Flashcard-Generator.git"
+  },
+  "author": "Alan Ashbeck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-ashbeck/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/a-ashbeck/Flashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^2.0.0"
+  }
+}

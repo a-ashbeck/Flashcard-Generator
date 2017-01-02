@@ -24,7 +24,7 @@ function ClozeCard(text, cloze) {
             text: this.text,
             cloze: this.cloze,
             clozeDeleted: this.clozeDeleted,
-            type: 'cloze'
+            type: 'clozeCard'
         };
         // append card to log.txt
         fs.appendFile('log.txt', JSON.stringify(data) + ';', 'utf8', function(err) {
