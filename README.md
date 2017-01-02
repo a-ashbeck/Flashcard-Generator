@@ -56,21 +56,23 @@ All errors should log appropriately to the console.
 
 ## Example of a Basic Flashcard
 
+The basic flashcard constructor looks like this:
+
 ```javascript
 function BasicCard(front, back) {
     this.front = front;
     this.back = back;
-    // function to add the card to a log file
+    // Function to add the card to a log file
     this.createCardJSON = function() {
-        // flashcard object to be appended to log.txt
+        // Flashcard object to be appended to log.txt
         var data = {
             front: this.front,
             back: this.back,
             type: 'basicCard',
         };
-        // append card to log.txt
+        // Append card to log.txt
         fs.appendFile('log.txt', JSON.stringify(data) + ';', 'utf8', function(err) {
-            // if error, log error
+            // If error, log error
             if (err) {
                 console.log(err);
             }
@@ -79,5 +81,74 @@ function BasicCard(front, back) {
 }
 ```
 
+It takes in the arguments `front` and `back`, which it saves to the properties of the same name.
+
+The `createCardJSON` is a function that saves the data to the `log.txt` file as stringified JSON data.
+
+Here is an example of outputted data:
+
+```json
+{
+		"front":"What is Darth Vader's birth name?",
+		"back":"Anakin Skywalker",
+		"type":"basicCard"
+}
+```
+
 ## Example of a Cloze Flashcard
 
+The cloze flashcard constructor looks like this:
+
+```javascript
+function ClozeCard(text, cloze) {
+    this.text = text;
+    this.cloze = cloze;
+    this.clozeDeleted = '';
+    // Function for creating the cloze deleted text
+    this.createClozeDeleted = function() {
+        // Checks if the cloze is in the text...
+        if (this.text.indexOf(this.cloze) >= 0) {
+            // Replace the cloze in the text with ellipses
+            this.clozeDeleted = this.text.replace(this.cloze, '...');
+        } else {
+            // If the cloze is not the text, console log this error
+            console.log('ERROR: YOU DID SOMETHING WRONG')
+        }
+    };
+    // function to add the card to a log file
+    this.createCardJSON = function() {
+        // Flashcard object to be appended to log.txt
+        var data = {
+            text: this.text,
+            cloze: this.cloze,
+            clozeDeleted: this.clozeDeleted,
+            type: 'clozeCard'
+        };
+        // Append card to log.txt
+        fs.appendFile('log.txt', JSON.stringify(data) + ';', 'utf8', function(err) {
+            // If error, log error
+            if (err) {
+                console.log(err);
+            }
+        });
+    };
+}
+```
+
+It takes in the arguments `text` and `cloze`, which it saves to the properties of the same name.
+
+The `createClozeDeleted` is a prototype function that generates the proper value of `clozeDeleted`, which upon initiation is an empty string.
+If the given `cloze` matches no part of the full `text`, it will throw an error, and leave the value as an empty string.
+
+The `createCardJSON` is a function that saves the data to the `log.txt` file as stringified JSON data.
+
+Here is an example of outputted data:
+
+```json
+{
+		"text":"Darth Vader's birth name is Anakin Skywalker?",
+		"cloze":"Anakin Skywalker",
+		"clozeDeleted":"Darth Vader's birth name is ...",
+		"type":"clozeCard"
+}
+```
