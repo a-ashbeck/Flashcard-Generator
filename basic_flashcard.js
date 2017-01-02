@@ -2,10 +2,10 @@
 var fs = require('fs');
 
 // basic flashcard object constructor
-function BasicFlashcard(front, back) {
+function BasicCard(front, back) {
     this.front = front;
     this.back = back;
-    this.create = function() {
+    this.createCardJSON = function() {
         // flashcard object to be appended to log.txt
         var data = {
             front: this.front,
@@ -22,4 +22,4 @@ function BasicFlashcard(front, back) {
     };
 }
 
-module.exports = BasicFlashcard;
+module.exports = BasicCard;

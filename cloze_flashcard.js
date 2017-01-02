@@ -2,11 +2,18 @@
 var fs = require('fs');
 
 // cloze flashcard object constructor
-function ClozeFlashcard(text, cloze) {
+function ClozeCard(text, cloze) {
     this.text = text;
     this.cloze = cloze;
-    this.clozeDeleted = this.text.replace(this.cloze, '...');
-    this.create = function() {
+    this.clozeDeleted = '';
+    this.createClozeDeleted = function() {
+        if (this.text.indexOf(this.cloze) >= 0) {
+            this.clozeDeleted = this.text.replace(this.cloze, '...');
+        } else {
+            console.log('ERROR: YOU DID SOMETHING WRONG')
+        }
+    };
+    this.createCardJSON = function() {
         // flashcard object to be appended to log.txt
         var data = {
             text: this.text,
@@ -24,4 +31,4 @@ function ClozeFlashcard(text, cloze) {
     };
 }
 
-module.exports = ClozeFlashcard;
+module.exports = ClozeCard;
